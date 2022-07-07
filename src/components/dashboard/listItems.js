@@ -16,22 +16,18 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
-import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export default function MainListItems() {
-  const history = useNavigate();
   const [openReserva, setOpenReserva] = React.useState(false);
   const [openAdministracion, setOpenAdministracion] = React.useState(false);
+  const [openParametrización, setOpenParametrización] = React.useState(false);
 
   const handleClick = (param) => {
 
-    switch (param) {
-      case 1: setOpenReserva(!openReserva);
-        break;
-      case 2: setOpenAdministracion(!openAdministracion);
-      break;
-      default:
-    }
+      if (param === 1) setOpenReserva(!openReserva);
+      if (param === 2) setOpenAdministracion(!openAdministracion);
+      if (param === 6) setOpenParametrización(!openParametrización);
 
   };
 
@@ -75,7 +71,7 @@ export default function MainListItems() {
             <ListItemIcon>
               <StarBorder />
             </ListItemIcon>
-            <ListItemText primary="Cambio(TRM/IATA)" />
+            <Link to='/administrador/cambio' className='text-decoration-none text-black'><ListItemText primary="Cambio(TRM/IATA)"/></Link>
           </ListItemButton>
         </List>
     </Collapse>
@@ -87,18 +83,42 @@ export default function MainListItems() {
       </ListItemIcon>
       <ListItemText primary="Producto" />
     </ListItemButton>
+    
     <ListItemButton>
       <ListItemIcon>
         <AccountBalanceIcon />
       </ListItemIcon>
       <ListItemText primary="Contabilidad" />
     </ListItemButton>
-    <ListItemButton>
+
+    <ListItemButton onClick={() => handleClick(6)}>
       <ListItemIcon>
         <ConstructionIcon />
       </ListItemIcon>
       <ListItemText primary="Parametrización" />
+      {openParametrización ? <ExpandLess /> : <ExpandMore />}
     </ListItemButton>
+    <Collapse in={openParametrización} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <Link to='/administrador/cnfmoneda' className='text-decoration-none text-black'><ListItemText primary="Config. Moneda"/></Link>
+          </ListItemButton>
+        </List>
+    </Collapse>
+    <Collapse in={openParametrización} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItemButton sx={{ pl: 4 }}>
+            <ListItemIcon>
+              <StarBorder />
+            </ListItemIcon>
+            <Link to='/administrador/cnftipofactor' className='text-decoration-none text-black'><ListItemText primary="Config. Tipo de factor"/></Link>
+          </ListItemButton>
+        </List>
+    </Collapse>
+
     <ListItemButton>
       <ListItemIcon>
         <GppGoodIcon />

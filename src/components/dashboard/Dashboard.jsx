@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -15,10 +15,20 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MainListItems  from './listItems';
 import logo from '../../assets/img/logo.jpeg';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import CambioTrmIata from '../administrador/CambioTrmIata';
+import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
-const drawerWidth = 250;
+import CambioTrmIata from '../administrador/cambiotrmiata/CambioTrmIata';
+
+import CnfMoneda from '../administrador/cnfmonedas/CnfMoneda';
+import EditCnfMoneda from '../administrador/cnfmonedas/EditCnfMoneda';
+import CreateCnfMoneda from '../administrador/cnfmonedas/CreateCnfMoneda';
+
+import CnfTipoFactor from '../parametrización/cnftipofactor/CnfTipoFactor';
+import EditCnfTipoFactor from '../parametrización/cnftipofactor/EditCnfTipoFactor';
+import CreateCnfTipoFactor from '../parametrización/cnftipofactor/CreateCnfTipoFactor';
+
+
+const drawerWidth = 300;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -69,6 +79,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 function DashboardContent() {
+  const [titulo, setTitulo] = useState('Administrador');
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -104,7 +115,7 @@ function DashboardContent() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              {titulo}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -149,7 +160,17 @@ function DashboardContent() {
 
           {/* Contenido */}
           <div className="container-fluid mt-5">
-            <CambioTrmIata/>
+            <Routes>
+                <Route path='/administrador/cambio' exact element={<CambioTrmIata/>}/>
+
+                <Route path='/administrador/cnfmoneda' exact element={<CnfMoneda/>}/>
+                <Route path='/administrador/editcnfmoneda/:id' exact element={<EditCnfMoneda/>}/>
+                <Route path='/administrador/createcnfmoneda' exact element={<CreateCnfMoneda/>}/>
+                
+                <Route path='/administrador/cnftipofactor' exact element={<CnfTipoFactor/>}/>
+                <Route path='/administrador/editcnftipofactor/:id' exact element={<EditCnfTipoFactor/>}/>
+                <Route path='/administrador/createcnftipofactor' exact element={<CreateCnfTipoFactor/>}/>
+            </Routes>
           </div>
         </Box>
       </Box>
