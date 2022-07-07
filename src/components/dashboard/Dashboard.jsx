@@ -19,13 +19,13 @@ import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-
 
 import CambioTrmIata from '../administrador/cambiotrmiata/CambioTrmIata';
 
-import CnfMoneda from '../administrador/cnfmonedas/CnfMoneda';
-import EditCnfMoneda from '../administrador/cnfmonedas/EditCnfMoneda';
-import CreateCnfMoneda from '../administrador/cnfmonedas/CreateCnfMoneda';
+import CnfMoneda from '../administrador/parametrizacion/cnfmonedas/CnfMoneda';
+import EditCnfMoneda from '../administrador/parametrizacion/cnfmonedas/EditCnfMoneda';
+import CreateCnfMoneda from '../administrador/parametrizacion/cnfmonedas/CreateCnfMoneda';
 
-import CnfTipoFactor from '../parametrización/cnftipofactor/CnfTipoFactor';
-import EditCnfTipoFactor from '../parametrización/cnftipofactor/EditCnfTipoFactor';
-import CreateCnfTipoFactor from '../parametrización/cnftipofactor/CreateCnfTipoFactor';
+import CnfTipoFactor from '../administrador/parametrizacion/cnftipofactor/CnfTipoFactor';
+import EditCnfTipoFactor from '../administrador/parametrizacion/cnftipofactor/EditCnfTipoFactor';
+import CreateCnfTipoFactor from '../administrador/parametrizacion/cnftipofactor/CreateCnfTipoFactor';
 
 
 const drawerWidth = 300;

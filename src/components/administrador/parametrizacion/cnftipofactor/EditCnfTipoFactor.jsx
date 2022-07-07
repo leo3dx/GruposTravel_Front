@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
-import logo  from '../../../assets/img/logo.jpeg';
+import logo  from '../../../../assets/img/logo.jpeg';
 import axios from 'axios';
 
 const EditCnfTipoFactor = () => {
