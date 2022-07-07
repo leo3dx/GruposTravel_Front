@@ -17,7 +17,7 @@ import MainListItems  from './listItems';
 import logo from '../../assets/img/logo.jpeg';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
-import CambioTrmIata from '../administrador/cambiotrmiata/CambioTrmIata';
+import CambioTrmIata from '../administrador/administracion/cambiotrmiata/CambioTrmIata';
 
 import CnfMoneda from '../administrador/parametrizacion/cnfmonedas/CnfMoneda';
 import EditCnfMoneda from '../administrador/parametrizacion/cnfmonedas/EditCnfMoneda';
