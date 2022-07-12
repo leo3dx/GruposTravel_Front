@@ -18,10 +18,14 @@ import logo from '../../assets/img/logo.jpeg';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
 import CambioTrmIata from '../administrador/administracion/cambiotrmiata/CambioTrmIata';
+import EditCambiotrmiata from '../administrador/administracion/cambiotrmiata/EditCambioTrmIata'
+import CreateCambioTrmIata from '../administrador/administracion/cambiotrmiata/CreateCambioTrmIata'
 
 import CnfMoneda from '../administrador/parametrizacion/cnfmonedas/CnfMoneda';
 import EditCnfMoneda from '../administrador/parametrizacion/cnfmonedas/EditCnfMoneda';
 import CreateCnfMoneda from '../administrador/parametrizacion/cnfmonedas/CreateCnfMoneda';
+
+import NoticiasAdmin from '../administrador/administracion/noticias/NoticiasAdmin';
 
 import CnfTipoFactor from '../administrador/parametrizacion/cnftipofactor/CnfTipoFactor';
 import EditCnfTipoFactor from '../administrador/parametrizacion/cnftipofactor/EditCnfTipoFactor';
@@ -162,10 +166,14 @@ function DashboardContent() {
           <div className="container-fluid mt-5">
             <Routes>
                 <Route path='/administrador/cambio' exact element={<CambioTrmIata/>}/>
+                <Route path='/administrador/editcambiotrmiata/:id' exact element={<EditCambiotrmiata/>}/>
+                <Route path='/administrador/createcambiotrmiata' exact element={<CreateCambioTrmIata/>}/>
 
                 <Route path='/administrador/cnfmoneda' exact element={<CnfMoneda/>}/>
                 <Route path='/administrador/editcnfmoneda/:id' exact element={<EditCnfMoneda/>}/>
                 <Route path='/administrador/createcnfmoneda' exact element={<CreateCnfMoneda/>}/>
+
+                <Route path='/administrador/noticias' exact element={<NoticiasAdmin/>}/>
                 
                 <Route path='/administrador/cnftipofactor' exact element={<CnfTipoFactor/>}/>
                 <Route path='/administrador/editcnftipofactor/:id' exact element={<EditCnfTipoFactor/>}/>

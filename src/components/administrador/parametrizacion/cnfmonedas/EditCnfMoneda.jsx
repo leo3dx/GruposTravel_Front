@@ -57,7 +57,7 @@ const EditCnfMoneda = () => {
 
     return(
         <>
-            <div className="p-2 btn-1 text-center">Editar tipo de moenda</div>
+            <div className="p-2 btn-1 text-center">Editar tipo de moneda</div>
             <form className="form-control pt-3" onSubmit={guardar}>
                 <div className="row">
 
