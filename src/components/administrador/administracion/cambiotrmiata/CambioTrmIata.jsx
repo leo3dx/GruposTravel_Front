@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import { Link} from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import logo  from '../../../assets/img/logo.jpeg';
+import logo  from '../../../../assets/img/logo.jpeg';
 import axios from 'axios';
 
 const CnfMoneda = () => {
