@@ -16,8 +16,6 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
-import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
-import NewspaperIcon from '@mui/icons-material/Newspaper';
 import {Link} from 'react-router-dom';
 
 export default function MainListItems() {
@@ -67,23 +65,13 @@ export default function MainListItems() {
       <ListItemText primary="Administración" />
       {openAdministracion ? <ExpandLess /> : <ExpandMore />}
     </ListItemButton>
-    
-    {/* MODULO DE ADMINISTRACION */}
-
     <Collapse in={openAdministracion} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemIcon>
-              <CurrencyExchangeIcon />
+              <StarBorder />
             </ListItemIcon>
             <Link to='/administrador/cambio' className='text-decoration-none text-black'><ListItemText primary="Cambio(TRM/IATA)"/></Link>
-          </ListItemButton>
-
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <NewspaperIcon />
-            </ListItemIcon>
-            <Link to='/administrador/noticias' className='text-decoration-none text-black'><ListItemText primary="Noticias"/></Link>
           </ListItemButton>
         </List>
     </Collapse>

@@ -2,21 +2,13 @@ import React,{useState, useEffect} from 'react';
 import { Link} from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import LinearProgress from '@mui/material/LinearProgress';
-import logo  from '../../../../assets/img/logo.jpeg';
+import logo  from '../../../assets/img/logo.jpeg';
 import axios from 'axios';
 
-const TransformarFecha = (date) => {
-    const fecha = new Date(date);
-    return fecha.toLocaleDateString()
-}
-
-
-
-const CambioTrmIata = () => {
+const CnfMoneda = () => {
     
     const [cnfMonedas, setCnfMonedas] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState([true]);
 
     useEffect(() => {
 
@@ -25,7 +17,7 @@ const CambioTrmIata = () => {
     },[])
 
     const getCnfMoneda = () => {
-        axios.get(process.env.REACT_APP_API_HOST + 'cnfFactorCambio')
+        axios.get(process.env.REACT_APP_API_HOST + 'cnfMoneda')
         .then((response) => {
             setCnfMonedas(response.data)
             setLoading(false);
@@ -67,7 +59,7 @@ const CambioTrmIata = () => {
             <>
                 <div className='text-center'>
                     <div>
-                        <LinearProgress />
+                        <h2>Cargando</h2>
                     </div>
                     <div>
                         <img src={logo} width="300" alt="" />
@@ -85,7 +77,7 @@ const CambioTrmIata = () => {
                     <input type="text" className="form-control" id='buscar' onChange={buscar}/>
                 </form>
                 <div className="col d-flex justify-content-end">
-                    <Link to='/administrador/createcambiotrmiata' className='btn btn-primary fw-bold' title='Nuevo'>Nuevo</Link>
+                    <Link to='/administrador/createcnfmoneda' className='btn btn-primary fw-bold' title='Nuevo'>Nuevo</Link>
                 </div>
             </div>
             <div className="table-responsive">
@@ -93,10 +85,7 @@ const CambioTrmIata = () => {
                         <thead className="fw-none text-center btn-1">
                             <tr>
                                 <th>ID</th>
-                                <th>Moneda</th>
                                 <th>Tipo de moneda</th>
-                                <th>Valor</th>
-                                <th>Fecha</th>
                                 <th>Estado</th>
                                 <th>Opciones</th>
                             </tr>
@@ -104,20 +93,17 @@ const CambioTrmIata = () => {
                         <tbody className="text-center align-middle">
                             {
                                 cnfMonedas.map(moneda => (
-                                    
-                                        <tr key={"abc" + moneda.ID_MONEDA + moneda.FECHA_FCAMBIO}>
+                                    <>
+                                        <tr>
                                             <td>{moneda.ID_MONEDA}</td>
                                             <td>{moneda.NOMBRE_MONEDA}</td>
-                                            <td>Tipo de moneda</td>
-                                            <td>Valor</td>
-                                            <td>{TransformarFecha(moneda.FECHA_FCAMBIO)}</td>
                                             <td>{moneda.ESTADO_MONEDA === true ? 'Activo' : 'Inactivo'}</td>
                                             <td>
-                                                <Link to={'/administrador/editcambiotrmiata/'+moneda.ID_MONEDA} className="btn btn-warning p-1 m-1" title='Editar'><EditIcon/></Link>
+                                                <Link to={'/administrador/editcnfmoneda/'+moneda.ID_MONEDA} className="btn btn-warning p-1 m-1" title='Editar'><EditIcon/></Link>
                                                 <button className="btn btn-danger p-1 m-1" onClick={() => eliminar(moneda.ID_MONEDA)} title='Eliminar'><DeleteIcon/></button> 
                                             </td>
                                         </tr>
-                                    
+                                    </>
                                 ))
                             }
                                 
@@ -129,5 +115,4 @@ const CambioTrmIata = () => {
 
 }
 
-export default CambioTrmIata;
-
+export default CnfMoneda;
